@@ -2,11 +2,21 @@
     <head>
         <link rel="stylesheet" href="css/typography.css">
         <script type="text/javascript" src="javascript/math.js"></script>
+        <script type="text/javascript" src="javascript/dice.js"></script>
     </head>
 
     <body>
-        <h1>This is the index file</h1>
+        <h1>Turn this into a dice roller for a 🐈</h1>
         <button onclick="changeNumber();">click to show a random number</button>
         <div id="randomNumber">12</div>
+
+
+        <input type="text" id="dieValueInput" name="dieValueInput">
+        <div id="die0">
+            <button onclick="rollDie();">click to roll a die</button>
+            <div id="test"></div>
+        </div>
+
+        <button onclick="addDie();">click to add a die</button>
     </body>
 </html>
