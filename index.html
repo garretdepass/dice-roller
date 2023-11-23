@@ -10,24 +10,45 @@
             <div id="dice-controls">
                 <p>Add a die...</p>
                 <div id="dice-options">
-                    <button class="button-tertiary">d4</button>
-                    <button class="button-tertiary">d6</button>
-                    <button class="button-tertiary">d8</button>
-                    <button class="button-tertiary">d10</button>
-                    <button class="button-tertiary">d12</button>
-                    <button class="button-tertiary">d20</button>
-                    <button class="button-tertiary">d100</button>
+                    <button onclick="addDie(4);" class="button-tertiary">d4</button>
+                    <button onclick="addDie(6);" class="button-tertiary">d6</button>
+                    <button onclick="addDie(8);" class="button-tertiary">d8</button>
+                    <button onclick="addDie(10);" class="button-tertiary">d10</button>
+                    <button onclick="addDie(12);" class="button-tertiary">d12</button>
+                    <button onclick="addDie(20);" class="button-tertiary">d20</button>
+                    <button onclick="addDie(100);" class="button-tertiary">d100</button>
                 </div>
                 <button class="button-secondary">clear</button>
             </div>
             <div id="dice-container">
-                <div id="d4-column"><div id="d4-total"></div></div>
-                <div id="d6-column"><div id="d6-total"></div></div>
-                <div id="d8-column"><div id="d8-total"></div></div>
-                <div id="d10-column"><div id="d10-total"></div></div>
-                <div id="d12-column"><div id="d12-total"></div></div>
-                <div id="d20-column"><div id="d20-total"></div></div>
-                <div id="d100-column"><div id="d100-total"></div></div>
+                <div>
+                    <div id="d4-column"></div>
+                    <div id="d4-total"></div>
+                </div>
+                <div>
+                    <div id="d6-column"></div>
+                    <div id="d6-total"></div>
+                </div>
+                <div>
+                    <div id="d8-column"></div>
+                    <div id="d8-total"></div>
+                </div>
+                <div>
+                    <div id="d10-column"></div>
+                    <div id="d10-total"></div>
+                </div>
+                <div>
+                    <div id="d12-column"></div>
+                    <div id="d12-total"></div>
+                </div>
+                <div>
+                    <div id="d20-column"></div>
+                    <div id="d20-total"></div>
+                </div>
+                <div>
+                    <div id="d100-column"></div>
+                    <div id="d100-total"></div>
+                </div>
             </div>
         </div>
         <div>Roll result: <div id="result"></div></div>

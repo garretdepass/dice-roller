@@ -22,11 +22,18 @@ function rollDie() {
 
 
 //function taken from https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
-function addDie () {
+function addDie (dieType) {
+    //set string that passes integer from dieType to new variable
+    const columnNameString = "d" + dieType + "-column";
+    //sets value of variable to create a div element
     const newDie = document.createElement('div');
-    const newDieValue = document.createTextNode(Math.floor(Math.random() * 20))
-    newDie.appendChild(newDieValue)
-    const currentDie = document.getElementById('die0')
-    document.body.insertBefore(newDie, currentDie);
-
+    //sets value of variable to create a line of text with the die type
+    const newDieValue = document.createTextNode("d" + dieType);
+    // adds new child element declared earlier to element gotten by ID
+    document.getElementById(columnNameString).appendChild(newDie);
+    // adds the value applied earlier
+    newDie.appendChild(newDieValue);
+    // applies a class based on the die type
+    newDie.classList.add('d' + dieType);
+    newDie.classList.add('die');
 }
