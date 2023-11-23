@@ -6,12 +6,47 @@
     </head>
 
     <body>
+        <div id="dice-interface">
+            <div id="dice-controls">
+                <p>Add a die...</p>
+                <div id="dice-options">
+                    <button class="button-tertiary">d4</button>
+                    <button class="button-tertiary">d6</button>
+                    <button class="button-tertiary">d8</button>
+                    <button class="button-tertiary">d10</button>
+                    <button class="button-tertiary">d12</button>
+                    <button class="button-tertiary">d20</button>
+                    <button class="button-tertiary">d100</button>
+                </div>
+                <button class="button-secondary">clear</button>
+            </div>
+            <div id="dice-container">
+                <div id="d4-column"><div id="d4-total"></div></div>
+                <div id="d6-column"><div id="d6-total"></div></div>
+                <div id="d8-column"><div id="d8-total"></div></div>
+                <div id="d10-column"><div id="d10-total"></div></div>
+                <div id="d12-column"><div id="d12-total"></div></div>
+                <div id="d20-column"><div id="d20-total"></div></div>
+                <div id="d100-column"><div id="d100-total"></div></div>
+            </div>
+        </div>
+        <div>Roll result: <div id="result"></div></div>
+        <button class="button-primary">Roll</button>
+
+
+
+
+
+
+
+
+
         <h1>Turn this into a dice roller for a 🐈</h1>
         <button onclick="changeNumber();">click to show a random number</button>
         <div id="randomNumber">12</div>
 
 
-        <input type="text" id="dieValueInput" name="dieValueInput">
+        <input type="text" id="dieSidesInput" name="dieSidesInput">
         <div id="die0">
             <button onclick="rollDie();">click to roll a die</button>
             <div id="test"></div>

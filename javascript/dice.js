@@ -1,17 +1,22 @@
 //get the value put into the input
-function getDieValue() {
+function getDieSides() {
     return(
-        document.getElementById('dieValueInput').value
+        document.getElementById('dieSidesInput').value
     )
 }
 
 function rollDie() {
-    const rollValue = document.getElementById('test')
-    const dievalue = getDieValue()
-    rollValue.textContent = Math.ceil(Math.random() * dievalue);
-    console.log(rollValue)
+    const rollOutput = document.getElementById('test')
+    const dieSides = getDieSides()
+    const rollValue = Math.ceil(Math.random() * dieSides);
+    
+    if (rollValue == 20) {
+        rollOutput.textContent = "Nat 20 let's go!";
+    }
+    else {
+        rollOutput.textContent = rollValue;
+    }
 }
-// add: if it rolls a nat 20, say "nat 20 let's go!"
 
 
 
