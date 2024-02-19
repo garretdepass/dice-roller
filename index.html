@@ -1,79 +1,78 @@
 <html>
     <head>
-        <link rel="stylesheet" href="css/typography.css">
-        <script type="text/javascript" src="javascript/math.js"></script>
-        <script type="text/javascript" src="javascript/dice.js"></script>
+        <link rel="stylesheet" href="css/tokens.css">
+        <link rel="stylesheet" href="css/main.css">
     </head>
-
+    
     <body>
-        <div id="dice-interface">
-            <div id="dice-controls">
-                <p>Add a die...</p>
-                <div id="dice-options">
-                    <button onclick="addDie(4);" class="button-tertiary">d4</button>
-                    <button onclick="addDie(6);" class="button-tertiary">d6</button>
-                    <button onclick="addDie(8);" class="button-tertiary">d8</button>
-                    <button onclick="addDie(10);" class="button-tertiary">d10</button>
-                    <button onclick="addDie(12);" class="button-tertiary">d12</button>
-                    <button onclick="addDie(20);" class="button-tertiary">d20</button>
-                    <button onclick="addDie(100);" class="button-tertiary">d100</button>
-                </div>
-                <button class="button-secondary">clear</button>
+        <div id="panelLayout">
+            <div id="characterSheet">
+                <!--
+                    <ul class="traitSection">
+                    <div class="templateRow-trait">
+                        <div class="traitName">Cognition</div>
+                        <div class="rowDieContainer">
+                            <div class="DieCount">4</div>
+                            <div class="DieSides">d8</div>
+                        </div>
+                    </div>
+                    <div class="templateRow-attribute">
+                        <div class="attributeName">Artillery</div>
+                        <div class="rowDieContainer">
+                            <div class="DieCount"></div>
+                            <div class="DieSides, attributeDieSides">d8</div>
+                        </div>
+                    </div>
+                    <div class="templateRow-attribute">
+                        <div class="attributeName">Arts</div>
+                        <div class="rowDieContainer">
+                            <div class="DieCount"></div>
+                            <div class="DieSides, attributeDieSides">d8</div>
+                        </div>
+                    </div>
+                    <div class="templateRow-attribute">
+                        <div class="attributeName">Scrutinize</div>
+                        <div class="rowDieContainer">
+                            <div class="DieCount">4</div>
+                            <div class="DieSides, attributeDieSides">d8</div>
+                        </div>
+                    </div>
+                    <div class="templateRow-attribute">
+                        <div class="attributeName">Searcy</div>
+                        <div class="rowDieContainer">
+                            <div class="DieCount">4</div>
+                            <div class="DieSides, attributeDieSides">d8</div>
+                        </div>
+                    </div>
+                    <div class="templateRow-attribute">
+                        <div class="attributeName">Trackin'</div>
+                        <div class="rowDieContainer">
+                            <div class="DieCount">4</div>
+                            <div class="DieSides, attributeDieSides">d8</div>
+                        </div>
+                    </div>
+                </ul> 
+                -->
             </div>
-            <div id="dice-container">
-                <div>
-                    <div id="d4-column"></div>
-                    <div id="d4-total"></div>
+            <div id="mainView">
+                <div id="dieControls"></div>
+                <div id="rollPanel">
+                    <div id="rollRowContainer"></div>
+                    <div id="rollResultContainer"></div>
                 </div>
-                <div>
-                    <div id="d6-column"></div>
-                    <div id="d6-total"></div>
-                </div>
-                <div>
-                    <div id="d8-column"></div>
-                    <div id="d8-total"></div>
-                </div>
-                <div>
-                    <div id="d10-column"></div>
-                    <div id="d10-total"></div>
-                </div>
-                <div>
-                    <div id="d12-column"></div>
-                    <div id="d12-total"></div>
-                </div>
-                <div>
-                    <div id="d20-column"></div>
-                    <div id="d20-total"></div>
-                </div>
-                <div>
-                    <div id="d100-column"></div>
-                    <div id="d100-total"></div>
+                <div id="bottomRow">
+                    <div id="chipPanel"></div>
+                    <div id="tipPanel">
+                        <div id="tipTitle">test</div>
+                        <div id="tipBody">test</div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div>Roll result: <div id="result"></div></div>
-        <button class="button-primary" onclick="rollAllDice()">Roll</button>
-
-
-
-
-
-
-
-
-
-        <h1>Turn this into a dice roller for a 🐈</h1>
-        <button onclick="changeNumber();">click to show a random number</button>
-        <div id="randomNumber">12</div>
-
-
-        <input type="text" id="dieSidesInput" name="dieSidesInput">
-        <div id="die0">
-            <button onclick="rollDie();">click to roll a die</button>
-            <div id="test"></div>
-        </div>
-
-        <button onclick="rollDieColumn(4);">click to roll all d4's</button>
-        <div id="test2"></div>
+        <button onclick="cognition.printProperty(cognition)">click</button>
     </body>
-</html>
+    <script type="text/javascript" src="javascript/garretCharacterSheet.js"></script>
+    <script type="text/javascript" src="javascript/tips.js"></script>
+    <script type="text/javascript" src="javascript/math.js"></script>
+    <script type="text/javascript" src="javascript/dice.js"></script>
+    </html>

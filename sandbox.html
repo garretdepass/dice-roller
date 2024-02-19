@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="css/typography.css">
+        <script type="text/javascript" src="javascript/math.js"></script>
+        <script type="text/javascript" src="javascript/dice.js"></script>
+        <script type="text/javascript" src="javascript/tips.js"></script>
+    </head>
+
+    <body>
+        <div id="dice-interface">
+            <div id="dice-controls">
+                <p>Add a die...</p>
+                <div id="dice-options">
+                    <button onclick="addDie(4);" class="button-tertiary">d4</button>
+                    <button onclick="addDie(6);" class="button-tertiary">d6</button>
+                    <button onclick="addDie(8);" class="button-tertiary">d8</button>
+                    <button onclick="addDie(10);" class="button-tertiary">d10</button>
+                    <button onclick="addDie(12);" class="button-tertiary">d12</button>
+                    <button onclick="addDie(20);" class="button-tertiary">d20</button>
+                </div>
+                <button class="button-secondary">clear</button>
+            </div>
+            <div id="dice-container">
+                <div>
+                    <div id="d4-column"></div>
+                    <div id="d4-total"></div>
+                    <div id="d4-runningTotal"></div>
+                </div>
+                <div>
+                    <div id="d6-column"></div>
+                    <div id="d6-total"></div>
+                    <div id="d6-runningTotal"></div>
+                </div>
+                <div>
+                    <div id="d8-column"></div>
+                    <div id="d8-total"></div>
+                    <div id="d8-runningTotal"></div>
+                </div>
+                <div>
+                    <div id="d10-column"></div>
+                    <div id="d10-total"></div>
+                    <div id="d10-runningTotal"></div>
+                </div>
+                <div>
+                    <div id="d12-column"></div>
+                    <div id="d12-total"></div>
+                    <div id="d12-runningTotal"></div>
+                </div>
+                <div>
+                    <div id="d20-column"></div>
+                    <div id="d20-total"></div>
+                    <div id="d20-runningTotal"></div>
+                </div>
+            </div>
+        </div>
+        <div>Roll result: <div id="result"></div></div>
+        <button class="button-primary" onclick="rollDieColumnHighestValue(4)">Roll</button>
+
+
+
+
+
+<button onclick="serveRandomTip()">change tip</button>
+<div id="tipTitle">this is the tip title</div>
+
+
+        <h1>Turn this into a dice roller for a 🐈</h1>
+        <button onclick="changeNumber();">click to show a random number</button>
+        <div id="randomNumber">12</div>
+
+
+        <input type="text" id="dieSidesInput" name="dieSidesInput">
+        <div id="die0">
+            <button onclick="objectTestButton(20);">click to roll a die</button>
+            <div id="test"></div>
+        </div>
+
+        <button onclick="rollDieColumnHighestValue(4);">click to roll all d4's</button>
+        <div id="test2"></div>
+    </body>
+</html>
