@@ -6,40 +6,134 @@
     --main-gray-5: #E0E0E0;
     --main-gray-6: #F5F5F5;
     --main-blue-1: #2F80ED;
-  }
+}
 
 body {
     margin: 0;
     padding: 0;
 }
 
+.h1 {
+    font-family: Inter;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.h2 {
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.body {
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.body2 {
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.caption {
+    font-family: Inter;
+    font-size: 8px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.inter-regular {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "slnt" 0;
+}
+
+.inter-bold {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings:
+      "slnt" 0;
+  }
+
+
+
+
 #panelLayout {
     display: flex;
     flex-direction: row;
 }
 
-#characterSheet {
+.darkPanel {
     background-color: var(--main-gray-1, #333333);
     color: var(--main-gray-6, #F5F5F5);
+}
+
+
+#characterSheet {
     display: flex;
     width: 242px;
-    padding: 16px 8px 16px 16px;
+    padding: 16px;
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
     flex-shrink: 0;
     align-self: stretch;
+    height: 100vh;
+    overflow: scroll;
 }
+
+#characterSheet ul {
+    list-style-type: none;
+    display: flex;
+    padding-left: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+}
+
+#characterSheet li {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    align-self: stretch;
+    
+}
+
+.traitNameContainer {
+    flex: 1 0 0;
+}
+
+.dieInfoContainer {
+    display: flex;
+}
+
+
 
 .traitSection {
     display: flex;
     width: 181px;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     gap: 8px;
 }
 
-.templateRow-trait {
+.trait-row {
     display: flex;
     height: 24px;
     padding: 2px 4px;
@@ -47,19 +141,98 @@ body {
     gap: 16px;
     align-self: stretch;
     border-radius: 4px;
+    font-weight: 700;
 }
 
-.templateRow-attribute {
+.attribute-row {
     display: flex;
-    padding: 2px 4px;
+    padding: 2px 4px 2px 16px;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 4px;
+    align-self: stretch;
+}
+
+.rowIconContainer {
+    display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+
+.transparent {
+    opacity: 0;
+}
+
+.opaque {
+    opacity: 1;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.dieCountContainer, .dieSidesContainer {
+    color: var(--main-blue-1, #2F80ED);
+}
+
+.templateRowHover {
+    background: var(--main-gray-2, #4F4F4F);
+}
+
+.untrained {
+    opacity: 0.2;
+}
+
+#mainView {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+
+#dieControls {
+
+}
+
+#bottomRow {
+    display: flex;
+    height: 149px;
     align-items: flex-start;
     align-self: stretch;
 }
 
-.templateRow-trait:hover .templateRow-attribute:hover {
-    background: var(--main-gray-2, #4F4F4F);
+#chipPanel {
+    display: flex;
+    padding: 16px 24px 16px 32px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+    background: var(--main-gray-6, #F5F5F5);
 }
+
+#tipPanel {
+    display: flex;
+    padding: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+
+
+
+
 
 .button-primary {
     display: inline-flex;
