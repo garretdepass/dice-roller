@@ -8,9 +8,9 @@ function addTemplateRow(currentTrait, parentLocation) {
     // create new div elements with attributes
     const newTemplateRow = document.createElement("li");
     newTemplateRow.setAttribute("id", `${currentTrait.name}-row`);
-    newTemplateRow.setAttribute("class", `${currentTrait.type}-row`)
+    newTemplateRow.setAttribute("class", `${currentTrait.type}-row`);
     const nameContainer = document.createElement("div");
-    nameContainer.setAttribute("class", "traitNameContainer")
+    nameContainer.setAttribute("class", "traitNameContainer");
     const dieInfoContainer = document.createElement("div");
     dieInfoContainer.setAttribute("class", "dieInfoContainer")
     const dieCountContainer = document.createElement("div");
@@ -18,8 +18,8 @@ function addTemplateRow(currentTrait, parentLocation) {
     const dieSidesContainer = document.createElement("div");
     dieSidesContainer.setAttribute("class", "dieSidesContainer");
     
-    const rowIconContainer = document.createElement("div")
-    rowIconContainer.setAttribute("class", "transparent material-symbols-outlined")
+    const rowIconContainer = document.createElement("div");
+    rowIconContainer.setAttribute("class", "transparent material-symbols-outlined");
     rowIconContainer.innerHTML ='<span class="material-symbols-outlined">ifl</span>';
     
     
@@ -27,7 +27,7 @@ function addTemplateRow(currentTrait, parentLocation) {
     // and give it some content
     const traitName = document.createTextNode(currentTrait.name);
     const traitDieCount = document.createTextNode(currentTrait.dieCount);
-    const plainTextD = document.createTextNode("d")
+    const plainTextD = document.createTextNode("d");
     const traitDieSides = document.createTextNode(currentTrait.dieSides);
     
     // add conditional styling based on row data
@@ -66,7 +66,7 @@ function addTemplateRow(currentTrait, parentLocation) {
         });
             
     // Add an onclick attribute        
-    newTemplateRow.setAttribute("onclick", `setTemplateFor(${currentTrait.dieCount})`);
+    newTemplateRow.setAttribute("onclick", `setMainRollRow(${currentTrait.dieCount}, ${currentTrait.dieSides})`);
             
             
     // add the text node to the newly created div
