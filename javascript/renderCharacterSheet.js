@@ -41,9 +41,7 @@ function addTemplateRow(currentTrait, parentLocation) {
     
     if (currentTrait.dieCount === 0) {
         dieInfoContainer.classList.add("untrained");
-    } else {
-        console.log(currentTrait.dieCount)
-    }
+    };
     
     // add a mouseenter
     newTemplateRow.addEventListener(

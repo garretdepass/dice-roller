@@ -2,12 +2,11 @@ let aceCount = 0;
 var currentTraitDieCount;
 var currentTraitDieSides;
 let rollRowCount = 0;
+var runningRollTotal = 0;
+var currentPenalty = 0;
 
 // function that adds a new row to the roll panel
 function addRollRow(numberOfDice, numberOfSides) {
-
-    currentTraitDieCount = numberOfDice;
-    currentTraitDieSides = numberOfSides;
 
 
     // set the location that rollRow will be added
@@ -22,7 +21,6 @@ function addRollRow(numberOfDice, numberOfSides) {
     
     // put the div elements onto the page
     rollRowContainer.appendChild(newRollRow)
-    
     
     // add dice to rollRow
     for (let i = 0; i < numberOfDice; i++) {
@@ -119,7 +117,6 @@ function addRollRow(numberOfDice, numberOfSides) {
         svg.appendChild(dieShape);
         svg.appendChild(text);
     }
-    console.log(rollRowCount);
 }
 
 // Called when adding a new main roll row (clicking on a template row)
@@ -129,7 +126,33 @@ function addMainRollRow(numberOfDice, numberOfSides) {
     const rollRowContainer = document.getElementById("rollRowContainer");
     rollRowContainer.replaceChildren();
     rollRowCount = 0;
+    currentTraitDieCount = numberOfDice;
+    currentTraitDieSides = numberOfSides;
+    
+    // if (numberOfDice == 0) {
+    //     numberOfDice = numberOfDice + 1;
+    //     currentTraitDieCount = currentTraitDieCount + 1;
+    //     currentPenalty = -4;
+    //     const rollResult = document.getElementById("rollResultContainer")
+    //     const penalty = document.createElement("div");
+    //     penalty.setAttribute("id", "penaltyContainer");
+    //     const penaltyText = document.createTextNode(`Untrained penalty (${currentPenalty}) applied`);
+    //     penalty.appendChild(penaltyText);
+    //     rollResult.appendChild(penalty);
+    // } else {
+    //     currentPenalty = 0;
+    //     const rollResult = document.getElementById("rollResultContainer")
+    //     rollResult.replaceChildren();
+    // }
+
+    const helperText = document.getElementById("helperText")
+    helperText.setAttribute("class", "hidden");
     addRollRow(numberOfDice, numberOfSides)
+    const rollResultText = document.getElementById("rollResult");
+    rollResultText.textContent = "";
+    rollResult.replaceChildren()
+    const rollButton = document.getElementById("rollButton");
+    rollButton.textContent = "Roll";
 
 }
 
@@ -138,15 +161,20 @@ function addExplodingRow(numberOfExplosions, numberOfDice, numberOfSides) {
     rollRowCount = rollRowCount + 1;
     addRollRow(numberOfExplosions, numberOfSides);
     rollDice(numberOfExplosions, numberOfSides);
-    
-    console.log(`the number of explosions are ${numberOfExplosions}, the number of dice is ${numberOfDice}, and the type of die is a d${numberOfSides}`);
 }
 
 
+function clickRoll(numberOfDice, numberOfSides) {
+    rollRowCount = 0;
+    runningRollTotal = 0;
+    addMainRollRow(currentTraitDieCount, numberOfSides);
+    rollDice(currentTraitDieCount, numberOfSides);
+    console.log(currentTraitDieCount);
+    console.log("Current running total is " + runningRollTotal)
+}
 
 // function to roll all dice in main row and find the highest roll result
 function rollDice(numberOfDice, numberOfSides) {
-    
     aceCount = 0;
     const rollResult = [];
     for (let i = 0; i < numberOfDice; i++) {
@@ -154,27 +182,32 @@ function rollDice(numberOfDice, numberOfSides) {
         rollResult.push(singleDieResult);
         let currentDieText = document.getElementById(`row${rollRowCount}die${i}Text`);
         currentDieText.textContent = singleDieResult;
-
+        
         // if the die roll is the highest possible, incrememnt the ace count
         if (singleDieResult == numberOfSides) {
             aceCount = aceCount + 1
-            console.log("Just got an ace");
-        } else {
-            console.log("no ace");
         };
         
     }
-
+    
     if (aceCount !== 0) {
         addExplodingRow(aceCount, numberOfDice, numberOfSides)
-    } else {
-        console.log("no explosions");
+    } 
+    else {
+        const rollButton = document.getElementById("rollButton");
+        rollButton.textContent = "Roll Again";
     }
-
+    
+    
     
     // find the highest value in the roll and display in DOM
     const highestRoll = rollResult.reduce((a, b) => Math.max(a, b), -Infinity);
+    runningRollTotal = runningRollTotal + highestRoll + currentPenalty;
     const rollResultText = document.getElementById("rollResult");
-    rollResultText.textContent = `Roll result: ${highestRoll}`;
-    console.log("ace count is " + aceCount);
+    rollResultText.textContent = `Roll result: ${runningRollTotal}`;
+}
+
+function reRoll(currentTraitDieCount, currentTraitDieSides) {
+    addMainRollRow(currentTraitDieCount, currentTraitDieSides)
+    rollDice(currentTraitDieCount, currentTraitDieSides)
 }

@@ -119,15 +119,28 @@ knowledge.type = "trait";
 
     const academia = Object.create(templateRow)
     academia.name = "Academia";
-    academia.dieCount = 0;
+    academia.dieCount = 1;
     academia.dieSides = knowledge.dieSides;
     academia.type = "attribute";
 
+        const occult = Object.create(templateRow)
+        occult.name = "Occult";
+        occult.dieCount = 1;
+        occult.dieSides = academia.dieSides;
+        occult.type = "concentration";
+
     const areaKnowledge = Object.create(templateRow)
     areaKnowledge.name = "Area knowledge";
-    areaKnowledge.dieCount = 0;
+    areaKnowledge.dieCount = 2;
     areaKnowledge.dieSides = knowledge.dieSides;
     areaKnowledge.type = "attribute";
+    
+        const homeCounty = Object.create(templateRow)
+        homeCounty.name = "Home County";
+        homeCounty.dieCount = 2;
+        homeCounty.dieSides = areaKnowledge.dieSides;
+        homeCounty.type = "concentration";
+        homeCounty.location = "Boston";
 
     const demolition = Object.create(templateRow)
     demolition.name = "Demolition";
@@ -137,15 +150,21 @@ knowledge.type = "trait";
 
     const disguise = Object.create(templateRow)
     disguise.name = "Disguise";
-    disguise.dieCount = 0;
+    disguise.dieCount = 1;
     disguise.dieSides = knowledge.dieSides;
     disguise.type = "attribute";
 
     const language = Object.create(templateRow)
     language.name = "Language";
-    language.dieCount = 0;
+    language.dieCount = 2;
     language.dieSides = knowledge.dieSides;
     language.type = "attribute";
+
+        const english = Object.create(templateRow)
+        english.name = "English";
+        english.dieCount = 2;
+        english.dieSides = language.dieSides;
+        english.type = "concentration";
 
     const madScience = Object.create(templateRow)
     madScience.name = "Mad Science";
@@ -161,15 +180,27 @@ knowledge.type = "trait";
 
     const professional = Object.create(templateRow)
     professional.name = "Professional";
-    professional.dieCount = 0;
+    professional.dieCount = 1;
     professional.dieSides = knowledge.dieSides;
     professional.type = "attribute";
 
+        const law = Object.create(templateRow)
+        law.name = "Law";
+        law.dieCount = 1;
+        law.dieSides = professional.dieSides;
+        law.type = "concentration";
+
     const science = Object.create(templateRow)
     science.name = "Science";
-    science.dieCount = 0;
+    science.dieCount = 1;
     science.dieSides = knowledge.dieSides;
     science.type = "attribute";
+
+        const biology = Object.create(templateRow)
+        biology.name = "Biology";
+        biology.dieCount = 1;
+        biology.dieSides = science.dieSides;
+        biology.type = "concentration";
 
     const trade = Object.create(templateRow)
     trade.name = "Trade";
@@ -192,7 +223,7 @@ mien.type = "trait";
 
     const leadership= Object.create(templateRow)
     leadership.name = "Leadership";
-    leadership.dieCount = 0;
+    leadership.dieCount = 1;
     leadership.dieSides = mien.dieSides;
     leadership.type = "attribute";
 
@@ -204,19 +235,25 @@ mien.type = "trait";
 
     const performin = Object.create(templateRow)
     performin.name = "Performin'";
-    performin.dieCount = 0;
+    performin.dieCount = 2;
     performin.dieSides = mien.dieSides;
     performin.type = "attribute";
 
+        const acting = Object.create(templateRow)
+        acting.name = "Acting";
+        acting.dieCount = 2;
+        acting.dieSides = performin.dieSides;
+        acting.type = "concentration";
+
     const persuasion = Object.create(templateRow)
     persuasion.name = "Persuasion";
-    persuasion.dieCount = 0;
+    persuasion.dieCount = 3;
     persuasion.dieSides = mien.dieSides;
     persuasion.type = "attribute";
 
     const taleTellin = Object.create(templateRow)
     taleTellin.name = "Tale tellin'";
-    taleTellin.dieCount = 0;
+    taleTellin.dieCount = 2;
     taleTellin.dieSides = mien.dieSides;
     taleTellin.type = "attribute";
 
@@ -229,21 +266,27 @@ nimbleness.type = "trait";
 
     const climbin = Object.create(templateRow)
     climbin.name = "Climbin'";
-    climbin.dieCount = 0;
+    climbin.dieCount = 1;
     climbin.dieSides = nimbleness.dieSides;
     climbin.type = "attribute";
 
     const dodge = Object.create(templateRow)
     dodge.name = "Dodge";
-    dodge.dieCount = 0;
+    dodge.dieCount = 2;
     dodge.dieSides = nimbleness.dieSides;
     dodge.type = "attribute";
 
     const drivin = Object.create(templateRow)
     drivin.name = "Drivin'";
-    drivin.dieCount = 0;
+    drivin.dieCount = 1;
     drivin.dieSides = nimbleness.dieSides;
     drivin.type = "attribute";
+
+        const steamWagon = Object.create(templateRow)
+        steamWagon.name = "Steam Wagon";
+        steamWagon.dieCount = 1;
+        steamWagon.dieSides = drivin.dieSides;
+        steamWagon.type = "concentration";
 
     const fightin = Object.create(templateRow)
     fightin.name = "Fightin'";
@@ -259,7 +302,7 @@ nimbleness.type = "trait";
 
     const sneak = Object.create(templateRow)
     sneak.name = "Sneak";
-    sneak.dieCount = 0;
+    sneak.dieCount = 3;
     sneak.dieSides = nimbleness.dieSides;
     sneak.type = "attribute";
 
@@ -271,7 +314,7 @@ nimbleness.type = "trait";
 
     const teamster = Object.create(templateRow)
     teamster.name = "Teamster";
-    teamster.dieCount = 0;
+    teamster.dieCount = 1;
     teamster.dieSides = nimbleness.dieSides;
     teamster.type = "attribute";
 
@@ -284,9 +327,15 @@ quickness.type = "trait";
 
     const quickDraw = Object.create(templateRow)
     quickDraw.name = "Quick Draw";
-    quickDraw.dieCount = 0;
+    quickDraw.dieCount = 2;
     quickDraw.dieSides = quickness.dieSides;
     quickDraw.type = "attribute";
+
+        const quickDrawPistol = Object.create(templateRow)
+        quickDrawPistol.name = "Pistol";
+        quickDrawPistol.dieCount = 2;
+        quickDrawPistol.dieSides = quickDraw.dieSides;
+        quickDrawPistol.type = "concentration";
 
 const smarts = Object.create(templateRow)
 smarts.name = "Smarts";
@@ -296,7 +345,7 @@ smarts.type = "trait";
 
     const bluff = Object.create(templateRow)
     bluff.name = "Bluff";
-    bluff.dieCount = 0;
+    bluff.dieCount = 2;
     bluff.dieSides = smarts.dieSides;
     bluff.type = "attribute";
 
@@ -308,7 +357,7 @@ smarts.type = "trait";
 
     const ridicule = Object.create(templateRow)
     ridicule.name = "Ridicule";
-    ridicule.dieCount = 0;
+    ridicule.dieCount = 1;
     ridicule.dieSides = smarts.dieSides;
     ridicule.type = "attribute";
 
@@ -320,7 +369,7 @@ smarts.type = "trait";
 
     const streetwise = Object.create(templateRow)
     streetwise.name = "Streetwise";
-    streetwise.dieCount = 0;
+    streetwise.dieCount = 1;
     streetwise.dieSides = smarts.dieSides;
     streetwise.type = "attribute";
 
@@ -350,7 +399,7 @@ spirit.type = "trait";
 
     const guts = Object.create(templateRow)
     guts.name = "Guts";
-    guts.dieCount = 0;
+    guts.dieCount = 5;
     guts.dieSides = spirit.dieSides;
     guts.type = "attribute";
 
@@ -371,9 +420,17 @@ cognition.subTraits = [artillery, arts, scrutinize, search, trackin];
 deftness.subTraits = [bow, filchin, lockpickin, shootin, sleightOfHand, speedLoad, throwin];
 shootin.subTraits = [pistol];
 knowledge.subTraits = [academia, areaKnowledge, demolition, disguise, language, madScience, medicine, professional, science, trade];
+academia.subTraits = [occult];
+areaKnowledge.subTraits = [homeCounty];
+language.subTraits = [english];
+professional.subTraits = [law];
+science.subTraits = [biology];
 mien.subTraits = [animalWranglin, leadership, overawe, performin, persuasion, taleTellin];
+performin.subTraits = [acting];
 nimbleness.subTraits = [climbin, dodge, drivin, fightin, horseRidin, sneak, swimmin, teamster];
+drivin.subTraits = [steamWagon];
 quickness.subTraits = [quickDraw];
+quickDraw.subTraits = [quickDrawPistol];
 smarts.subTraits = [bluff, gamblin, ridicule, scroungin, streetwise, survival, tinkerin];
 spirit.subTraits = [faith, guts];
 const characterTraits = [cognition, deftness, knowledge, mien, nimbleness, quickness, smarts, spirit, strength, vigor];
