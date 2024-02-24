@@ -1,5 +1,13 @@
+let aceCount = 0;
+var currentTraitDieCount
+var currentTraitDieSides
+
+
 // function that adds a dice roll row to the roll panel
-function setMainRollRow(numberOfDice, numberOfSides) {
+function addRollRow(numberOfDice, numberOfSides) {
+
+    currentTraitDieCount = numberOfDice;
+    currentTraitDieSides = numberOfSides;
 
     // remove any existing rollRows
     const existingRollRow = document.getElementById("mainRollRow");
@@ -121,7 +129,46 @@ function setMainRollRow(numberOfDice, numberOfSides) {
     }
 }
 
+
+// function to add a roll row when dice explode
+function explodeDice(numberOfExplosions) {
+    console.log("the number of explosions are " + numberOfExplosions);
+}
+
+
+
 // function to roll all dice in main row and find the highest roll result
 function rollDice(numberOfDice, numberOfSides) {
+    
+    aceCount = 0;
+    const rollResult = [];
 
+    for (let i = 0; i < numberOfDice; i++) {
+        let singleDieResult = Math.ceil(Math.random() * numberOfSides);
+        rollResult.push(singleDieResult);
+        let currentDieText = document.getElementById(`die${i}Text`);
+        currentDieText.textContent = singleDieResult;
+
+        // if the die roll is the highest possible, incrememnt the ace count
+        if (singleDieResult == numberOfSides) {
+            aceCount = aceCount + 1
+            console.log("Just got an ace");
+        } else {
+            console.log("no ace");
+        };
+        
+    }
+
+    if (aceCount !== 0) {
+        explodeDice(aceCount);
+    } else {
+        console.log("no explosions");
+    }
+
+    
+    // find the highest value in the roll and display in DOM
+    const highestRoll = rollResult.reduce((a, b) => Math.max(a, b), -Infinity);
+    const rollResultText = document.getElementById("rollResult");
+    rollResultText.textContent = `Roll result: ${highestRoll}`;
+    console.log("ace count is " + aceCount);
 }

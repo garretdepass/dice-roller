@@ -1,5 +1,6 @@
 // function that adds a row to a template section, including trait name, die count, and die sides. Takes 2 
 // arguments - the current trait (or attribute/concentration) and the name of the parent location to append with this row
+
 function addTemplateRow(currentTrait, parentLocation) {
     
     // set variable that contains character sheet ID
@@ -66,7 +67,8 @@ function addTemplateRow(currentTrait, parentLocation) {
         });
             
     // Add an onclick attribute        
-    newTemplateRow.setAttribute("onclick", `setMainRollRow(${currentTrait.dieCount}, ${currentTrait.dieSides})`);
+    newTemplateRow.setAttribute("onclick", `addRollRow(${currentTrait.dieCount}, ${currentTrait.dieSides})`);
+    
             
             
     // add the text node to the newly created div
