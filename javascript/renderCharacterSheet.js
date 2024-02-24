@@ -67,7 +67,7 @@ function addTemplateRow(currentTrait, parentLocation) {
         });
             
     // Add an onclick attribute        
-    newTemplateRow.setAttribute("onclick", `addRollRow(${currentTrait.dieCount}, ${currentTrait.dieSides})`);
+    newTemplateRow.setAttribute("onclick", `addMainRollRow(${currentTrait.dieCount}, ${currentTrait.dieSides})`);
     
             
             

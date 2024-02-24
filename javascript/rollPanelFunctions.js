@@ -1,22 +1,14 @@
 let aceCount = 0;
-var currentTraitDieCount
-var currentTraitDieSides
+var currentTraitDieCount;
+var currentTraitDieSides;
+let rollRowCount = 0;
 
-
-// function that adds a dice roll row to the roll panel
+// function that adds a new row to the roll panel
 function addRollRow(numberOfDice, numberOfSides) {
 
     currentTraitDieCount = numberOfDice;
     currentTraitDieSides = numberOfSides;
 
-    // remove any existing rollRows
-    const existingRollRow = document.getElementById("mainRollRow");
-    if (existingRollRow) {
-        existingRollRow.remove();
-    } 
-    else {
-        console.log("working")
-    }
 
     // set the location that rollRow will be added
     const rollRowContainer = document.getElementById("rollRowContainer");
@@ -119,7 +111,7 @@ function addRollRow(numberOfDice, numberOfSides) {
         text.setAttribute("y",49);
         text.setAttribute("text-anchor", "middle");
         text.setAttribute("class","dieText");
-        text.setAttribute("id",`die${i}Text`);
+        text.setAttribute("id",`row${rollRowCount}die${i}Text`);
         var dieContent = document.createTextNode(`d${numberOfSides}`);
         
         // attach it all to the SVG
@@ -127,12 +119,27 @@ function addRollRow(numberOfDice, numberOfSides) {
         svg.appendChild(dieShape);
         svg.appendChild(text);
     }
+    console.log(rollRowCount);
 }
 
+// Called when adding a new main roll row (clicking on a template row)
+function addMainRollRow(numberOfDice, numberOfSides) {
+
+    // remove any existing rollRows
+    const rollRowContainer = document.getElementById("rollRowContainer");
+    rollRowContainer.replaceChildren();
+    rollRowCount = 0;
+    addRollRow(numberOfDice, numberOfSides)
+
+}
 
 // function to add a roll row when dice explode
-function explodeDice(numberOfExplosions) {
-    console.log("the number of explosions are " + numberOfExplosions);
+function addExplodingRow(numberOfExplosions, numberOfDice, numberOfSides) {
+    rollRowCount = rollRowCount + 1;
+    addRollRow(numberOfExplosions, numberOfSides);
+    rollDice(numberOfExplosions, numberOfSides);
+    
+    console.log(`the number of explosions are ${numberOfExplosions}, the number of dice is ${numberOfDice}, and the type of die is a d${numberOfSides}`);
 }
 
 
@@ -142,11 +149,10 @@ function rollDice(numberOfDice, numberOfSides) {
     
     aceCount = 0;
     const rollResult = [];
-
     for (let i = 0; i < numberOfDice; i++) {
         let singleDieResult = Math.ceil(Math.random() * numberOfSides);
         rollResult.push(singleDieResult);
-        let currentDieText = document.getElementById(`die${i}Text`);
+        let currentDieText = document.getElementById(`row${rollRowCount}die${i}Text`);
         currentDieText.textContent = singleDieResult;
 
         // if the die roll is the highest possible, incrememnt the ace count
@@ -160,7 +166,7 @@ function rollDice(numberOfDice, numberOfSides) {
     }
 
     if (aceCount !== 0) {
-        explodeDice(aceCount);
+        addExplodingRow(aceCount, numberOfDice, numberOfSides)
     } else {
         console.log("no explosions");
     }
