@@ -1,7 +1,15 @@
 const tip = {
     title: "placeholder string",
     body: "placeholder string",
+    
+    // PROPERTY TO ADD A TIP TO THE ARRAY, SO I DON'T HAVE TO MAINTAIN THE ARRAY SEPARATELY
+    // appendArray: function () {
+    //     tiplist.push(this);
+    //     console.log(tiplist[0]);
+    // },
 }
+
+// var tiplist = [];
 
 
 const tip0 = Object.create(tip);

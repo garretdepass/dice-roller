@@ -63,6 +63,28 @@ function addTemplateRow(currentTrait, parentLocation) {
             rowIconContainer.classList.remove("opaque");
             rowIconContainer.classList.add("transparent");
         });
+
+    newTemplateRow.addEventListener(
+        "mousedown",
+        (event) => {
+            var traitRow = [];
+            traitRow = document.getElementsByClassName("trait-row")
+            for (let i = 0; i < traitRow.length; i++) {
+                traitRow[i].classList.remove("templateRowActive")
+            }
+            var attributeRow = [];
+            attributeRow = document.getElementsByClassName("attribute-row")
+            for (let i = 0; i < attributeRow.length; i++) {
+                attributeRow[i].classList.remove("templateRowActive")
+            }
+            newTemplateRow.classList.add("templateRowActive")
+
+            
+            // const attributeRow = [];
+            // document.getElementsByClassName("trait-row")
+            // newTemplateRow.classList.add("h1")
+        }
+    )
             
     // Add an onclick attribute        
     newTemplateRow.setAttribute("onclick", `addMainRollRow(${currentTrait.dieCount}, ${currentTrait.dieSides})`);

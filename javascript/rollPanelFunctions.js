@@ -1,13 +1,14 @@
 let aceCount = 0;
-var currentTraitDieCount;
-var currentTraitDieSides;
+var naturalTraitDieCount;
+var naturalTraitDieSides;
+var adjustedTraitDieCount;
+var adjustedTraitDieSides;
 let rollRowCount = 0;
 var runningRollTotal = 0;
 var currentPenalty = 0;
 
 // function that adds a new row to the roll panel
 function addRollRow(numberOfDice, numberOfSides) {
-
 
     // set the location that rollRow will be added
     const rollRowContainer = document.getElementById("rollRowContainer");
@@ -119,40 +120,61 @@ function addRollRow(numberOfDice, numberOfSides) {
     }
 }
 
+
+// may need to pull this out into a separate penalties.js if there's anything else besides untrained.
+function setPenalty () {
+    
+    // define variables for the penalty text and count
+    const penaltyText = document.getElementById("penaltyText");
+    const penaltyCount = document.getElementById("penaltyCount");
+
+    // if the row is in an untrained skill, apply a penalty and display penalty message
+    if (naturalTraitDieCount == 0) {
+        adjustedTraitDieCount = 1;
+        currentPenalty = currentPenalty - 4;
+        document.getElementById("penaltyText").hidden = false;
+        penaltyCount.textContent = currentPenalty;
+        console.log(`adjusted trait die count is ${adjustedTraitDieCount} and current penalty (${currentPenalty}) was adjusted successfully`)
+    } else {
+        currentPenalty = 0;
+        console.log("no penalty added")
+        document.getElementById("penaltyText").hidden = true;
+    }
+
+
+}
+
 // Called when adding a new main roll row (clicking on a template row)
 function addMainRollRow(numberOfDice, numberOfSides) {
 
-    // remove any existing rollRows
+    // set global variable for die count and die sides equal to scoped variable
+    naturalTraitDieCount = numberOfDice;
+    naturalTraitDieSides = numberOfSides;
+    adjustedTraitDieCount = numberOfDice;
+    adjustedTraitDieSides = numberOfSides;
+
+    // remove any existing rollRows and penalties
     const rollRowContainer = document.getElementById("rollRowContainer");
     rollRowContainer.replaceChildren();
     rollRowCount = 0;
-    currentTraitDieCount = numberOfDice;
-    currentTraitDieSides = numberOfSides;
+    currentPenalty = 0
     
-    // if (numberOfDice == 0) {
-    //     numberOfDice = numberOfDice + 1;
-    //     currentTraitDieCount = currentTraitDieCount + 1;
-    //     currentPenalty = -4;
-    //     const rollResult = document.getElementById("rollResultContainer")
-    //     const penalty = document.createElement("div");
-    //     penalty.setAttribute("id", "penaltyContainer");
-    //     const penaltyText = document.createTextNode(`Untrained penalty (${currentPenalty}) applied`);
-    //     penalty.appendChild(penaltyText);
-    //     rollResult.appendChild(penalty);
-    // } else {
-    //     currentPenalty = 0;
-    //     const rollResult = document.getElementById("rollResultContainer")
-    //     rollResult.replaceChildren();
-    // }
-
-    const helperText = document.getElementById("helperText")
-    helperText.setAttribute("class", "hidden");
-    addRollRow(numberOfDice, numberOfSides)
-    const rollResultText = document.getElementById("rollResult");
-    rollResultText.textContent = "";
-    rollResult.replaceChildren()
+    // reset any roll result text
+    document.getElementById("rollResult").hidden = true;
     const rollButton = document.getElementById("rollButton");
     rollButton.textContent = "Roll";
+    document.getElementById("rollButton").disabled = false;
+    document.getElementById("penaltyText").hidden = true;
+    
+    //hide helper text
+    document.getElementById("helperText").hidden = true;
+    
+
+    // deal with any penalties
+    setPenalty();
+    
+    //add a row with the adjusted (in case of penalty) number of dice
+    addRollRow(adjustedTraitDieCount, adjustedTraitDieSides)
 
 }
 
@@ -164,13 +186,21 @@ function addExplodingRow(numberOfExplosions, numberOfDice, numberOfSides) {
 }
 
 
-function clickRoll(numberOfDice, numberOfSides) {
-    rollRowCount = 0;
+function clickRoll(naturalTraitDieCount, numberOfSides) {
     runningRollTotal = 0;
-    addMainRollRow(currentTraitDieCount, numberOfSides);
-    rollDice(currentTraitDieCount, numberOfSides);
-    console.log(currentTraitDieCount);
-    console.log("Current running total is " + runningRollTotal)
+    rollDice(adjustedTraitDieCount, numberOfSides);
+    console.log("just hit clickRoll. adjusted trait die count is " + adjustedTraitDieCount);
+    console.log("just hit clickRoll. Current running total is " + runningRollTotal)
+    const rollButton = document.getElementById("rollButton")
+    rollButton.setAttribute("onClick", "reRoll(naturalTraitDieCount, naturalTraitDieSides)")
+    reportResult();
+}
+
+function reRoll() {
+    runningRollTotal = 0;
+    addMainRollRow(naturalTraitDieCount, naturalTraitDieSides);
+    rollDice(adjustedTraitDieCount, adjustedTraitDieSides);
+    reportResult();
 }
 
 // function to roll all dice in main row and find the highest roll result
@@ -198,16 +228,21 @@ function rollDice(numberOfDice, numberOfSides) {
         rollButton.textContent = "Roll Again";
     }
     
+    // define variables for the penalty text and count
+    const penaltyText = document.getElementById("penaltyText");
+    const penaltyCount = document.getElementById("penaltyCount");
+    
     
     
     // find the highest value in the roll and display in DOM
     const highestRoll = rollResult.reduce((a, b) => Math.max(a, b), -Infinity);
-    runningRollTotal = runningRollTotal + highestRoll + currentPenalty;
-    const rollResultText = document.getElementById("rollResult");
-    rollResultText.textContent = `Roll result: ${runningRollTotal}`;
+    runningRollTotal = runningRollTotal + highestRoll;
 }
 
-function reRoll(currentTraitDieCount, currentTraitDieSides) {
-    addMainRollRow(currentTraitDieCount, currentTraitDieSides)
-    rollDice(currentTraitDieCount, currentTraitDieSides)
+function reportResult () {
+    const adjustedRollResult = runningRollTotal + currentPenalty;
+    document.getElementById("rollResult").hidden = false;
+    const rollResultText = document.getElementById("rollResultInteger");
+    rollResultText.textContent = adjustedRollResult;
+
 }
