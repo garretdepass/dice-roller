@@ -31,7 +31,6 @@ cognition.type = "trait";
     artillery.dieCount = 0;
     artillery.dieSides = cognition.dieSides;
     artillery.type = "attribute";
-    artillery.appendParentArray(cognition);
 
     const arts = Object.create(templateRow)
     arts.name = "Arts";

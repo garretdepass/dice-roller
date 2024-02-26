@@ -6,6 +6,25 @@ var adjustedTraitDieSides;
 let rollRowCount = 0;
 var runningRollTotal = 0;
 var currentPenalty = 0;
+var bustCount = 0;
+var isBust = false;
+
+
+function reportBust () {
+    const bustContainer = document.getElementById("bustContainer");
+
+    if (bustCount > adjustedTraitDieCount / 2) {
+        isBust = true;
+    } else {
+        isBust = false;
+    };
+
+    if (isBust) {
+        bustContainer.hidden = false;
+    } else {
+        bustContainer.hidden = true;
+    };
+}
 
 // function that adds a new row to the roll panel
 function addRollRow(numberOfDice, numberOfSides) {
@@ -188,6 +207,10 @@ function addExplodingRow(numberOfExplosions, numberOfDice, numberOfSides) {
 
 function clickRoll(naturalTraitDieCount, numberOfSides) {
     runningRollTotal = 0;
+    bustCount = 0;
+    isBust = false;
+    bustContainer.hidden = true;
+    console.log(`just hid bust container. for the record, isBust is ${isBust} and bustContainer hidden is ${bustContainer.hidden}`)
     rollDice(adjustedTraitDieCount, numberOfSides);
     console.log("just hit clickRoll. adjusted trait die count is " + adjustedTraitDieCount);
     console.log("just hit clickRoll. Current running total is " + runningRollTotal)
@@ -198,6 +221,10 @@ function clickRoll(naturalTraitDieCount, numberOfSides) {
 
 function reRoll() {
     runningRollTotal = 0;
+    bustCount = 0;
+    isBust = false;
+    bustContainer.hidden = true;
+    console.log(`just hid bust container. for the record, isBust is ${isBust} and bustContainer hidden is ${bustContainer.hidden}`)
     addMainRollRow(naturalTraitDieCount, naturalTraitDieSides);
     rollDice(adjustedTraitDieCount, adjustedTraitDieSides);
     reportResult();
@@ -215,8 +242,13 @@ function rollDice(numberOfDice, numberOfSides) {
         
         // if the die roll is the highest possible, incrememnt the ace count
         if (singleDieResult == numberOfSides) {
-            aceCount = aceCount + 1
+            aceCount = aceCount + 1;
         };
+
+        // if the die roll is a 1, incrememnt the bust count
+        if (singleDieResult == 1) {
+            bustCount = bustCount + 1;
+        }
         
     }
     
@@ -244,5 +276,8 @@ function reportResult () {
     document.getElementById("rollResult").hidden = false;
     const rollResultText = document.getElementById("rollResultInteger");
     rollResultText.textContent = adjustedRollResult;
+    reportBust();
 
 }
+
+

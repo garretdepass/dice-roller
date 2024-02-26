@@ -63,7 +63,7 @@ function addTemplateRow(currentTrait, parentLocation) {
             rowIconContainer.classList.remove("opaque");
             rowIconContainer.classList.add("transparent");
         });
-
+    // when clicking on a templateRow, give it active styling until the next templateRow is clicked
     newTemplateRow.addEventListener(
         "mousedown",
         (event) => {
