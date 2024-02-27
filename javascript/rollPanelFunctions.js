@@ -10,6 +10,8 @@ var bustCount = 0;
 var isBust = false;
 
 
+
+
 function reportBust () {
     const bustContainer = document.getElementById("bustContainer");
 
