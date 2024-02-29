@@ -87,6 +87,10 @@ body {
     flex-direction: row;
 }
 
+.lightPanel {
+    background: var(--main-gray-6, #F5F5F5);
+}
+
 .darkPanel {
     background-color: var(--main-gray-1, #333333);
     color: var(--main-gray-6, #F5F5F5);
@@ -281,25 +285,16 @@ body {
     align-self: stretch;
 }
 
-#chipPanel {
-    display: flex;
-    padding: 16px 24px 16px 32px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-    align-self: stretch;
-    background: var(--main-gray-6, #F5F5F5);
-}
-
-#tipPanel {
+.bottomRowPanel {
     display: flex;
     padding: 16px;
     flex-direction: column;
     align-items: flex-start;
-    gap: 4px;
-    flex: 1 0 0;
     align-self: stretch;
+    flex: 1 0 0;
+    gap: 8px
 }
+
 
 
 
