@@ -31,12 +31,11 @@ addTip("Ammo", "Ammunition is plentiful in the West, but any given store might n
 addTip("Rounds", "When a firefight or a brawl erupts, the Marshal breaks the game down into \"rounds\" of 5 seconds each. Each round is further broken down into \"segments.\" Each Action Card (from Ace down to Deuce) represents these segments. The King is a segment, the Queen is a segment, and so on, all the way down to a Deuce.");
 addTip("The Red Joker", "The red Joker allows your character to go at any time during the round. He can even interrupt another character\'s action without having to make a second Quickness check. In a nutshell, your hero can go whenever he wants this round. \nThe downside is that since you can\'t put a Joker up your sleeve, you only get this advantage for one round. If you don\'t use it before the round is over, you have to discard it. You can still have a normal card up your sleeve, however, and you can even use them both at the same time if you like.");
 addTip("The Black Joker", "The black Joker is bad news all around. It means your character hesitates for some reason. Maybe he\'s starting to feel his wounds or he\'s distracted by the bad guys. Or his gun suffers a minor jam that takes him a moment to clear. Whatever the reason, you must discard the Joker and any card up your sleeve as well.");
-addTip("tip title", "tip Body");
-addTip("tip title", "tip Body");
-addTip("tip title", "tip Body");
-addTip("tip title", "tip Body");
+// addTip("tip title", "tip Body");
+// addTip("tip title", "tip Body");
+// addTip("tip title", "tip Body");
+// addTip("tip title", "tip Body");
 
-console.log(tiplist[0].title + ` is the first tip, and the list is ${tiplist.length} items long.`)
 
 // define a function to display a random tip
 function serveRandomTip() {

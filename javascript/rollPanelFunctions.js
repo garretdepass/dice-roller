@@ -28,22 +28,8 @@ function reportBust () {
     };
 }
 
-// function that adds a new row to the roll panel
-function addRollRow(numberOfDice, numberOfSides) {
-
-    // set the location that rollRow will be added
-    const rollRowContainer = document.getElementById("rollRowContainer");
-
-    // create new div elements with attributes
-    const newRollRow = document.createElement("div");
-    newRollRow.setAttribute("id", "mainRollRow");
-    newRollRow.setAttribute("class", "rollRow")    
-
-
-    
-    // put the div elements onto the page
-    rollRowContainer.appendChild(newRollRow)
-    
+// declare a function that adds dice to a row
+function addDice (numberOfDice, numberOfSides, newRollRow) {
     // add dice to rollRow
     for (let i = 0; i < numberOfDice; i++) {
         
@@ -61,7 +47,7 @@ function addRollRow(numberOfDice, numberOfSides) {
                 var dieShape = document.createElementNS(
                     "http://www.w3.org/2000/svg",
                     "path",
-                  );
+                );
                 dieShape.setAttribute('width',64);
                 dieShape.setAttribute('height',56);
                 dieShape.setAttribute("transform","translate(-14,-10)");
@@ -73,7 +59,7 @@ function addRollRow(numberOfDice, numberOfSides) {
                 var dieShape = document.createElementNS(
                     "http://www.w3.org/2000/svg",
                     "rect",
-                  );
+                );
                 dieShape.setAttribute('width',56);
                 dieShape.setAttribute('height',56);
                 dieShape.setAttribute("rx",4);
@@ -84,7 +70,7 @@ function addRollRow(numberOfDice, numberOfSides) {
                 var dieShape = document.createElementNS(
                     "http://www.w3.org/2000/svg",
                     "path",
-                  );
+                );
                 dieShape.setAttribute('width',66);
                 dieShape.setAttribute('height',86);
                 dieShape.setAttribute("transform","translate(-4,0)");
@@ -95,7 +81,7 @@ function addRollRow(numberOfDice, numberOfSides) {
                 var dieShape = document.createElementNS(
                     "http://www.w3.org/2000/svg",
                     "rect",
-                  );
+                );
                 dieShape.setAttribute('width',56);
                 dieShape.setAttribute('height',56);
                 dieShape.setAttribute('fill','purple');
@@ -105,7 +91,7 @@ function addRollRow(numberOfDice, numberOfSides) {
                 var dieShape = document.createElementNS(
                     "http://www.w3.org/2000/svg",
                     "rect",
-                  );
+                );
                 dieShape.setAttribute('width',56);
                 dieShape.setAttribute('height',56);
                 dieShape.setAttribute('fill','purple');
@@ -115,14 +101,13 @@ function addRollRow(numberOfDice, numberOfSides) {
                 var dieShape = document.createElementNS(
                     "http://www.w3.org/2000/svg",
                     "rect",
-                  );
+                );
                 dieShape.setAttribute('width',56);
                 dieShape.setAttribute('height',56);
                 dieShape.setAttribute('fill','purple');
                 dieShape.classList.add("die", `dieType-d${numberOfSides}`);
                 break;
             default:
-                console.log("Die not covered");
         }
         
         // generate text to put in die
@@ -141,6 +126,26 @@ function addRollRow(numberOfDice, numberOfSides) {
     }
 }
 
+// function that adds a new row to the roll panel
+function addRollRow(numberOfDice, numberOfSides) {
+
+    // set the location that rollRow will be added
+    const rollRowContainer = document.getElementById("rollRowContainer");
+
+    // create new div elements with attributes
+    const newRollRow = document.createElement("div");
+    newRollRow.setAttribute("id", "mainRollRow");
+    newRollRow.setAttribute("class", "rollRow")    
+
+
+    
+    // put the div elements onto the page
+    rollRowContainer.appendChild(newRollRow)
+
+    addDice(numberOfDice, numberOfSides, newRollRow);
+    
+}
+
 
 // may need to pull this out into a separate penalties.js if there's anything else besides untrained.
 function setPenalty () {
@@ -155,10 +160,8 @@ function setPenalty () {
         currentPenalty = currentPenalty - 4;
         document.getElementById("penaltyText").hidden = false;
         penaltyCount.textContent = currentPenalty;
-        console.log(`adjusted trait die count is ${adjustedTraitDieCount} and current penalty (${currentPenalty}) was adjusted successfully`)
     } else {
         currentPenalty = 0;
-        console.log("no penalty added")
         document.getElementById("penaltyText").hidden = true;
     }
 
@@ -174,11 +177,13 @@ function addMainRollRow(numberOfDice, numberOfSides) {
     adjustedTraitDieCount = numberOfDice;
     adjustedTraitDieSides = numberOfSides;
 
-    // remove any existing rollRows and penalties
+    // remove any existing rollRows, penalties, and bust indicators
     const rollRowContainer = document.getElementById("rollRowContainer");
     rollRowContainer.replaceChildren();
     rollRowCount = 0;
     currentPenalty = 0
+    isBust = 0;
+    bustContainer.hidden = true;
     
     // reset any roll result text
     document.getElementById("rollResult").hidden = true;
@@ -212,10 +217,7 @@ function clickRoll(naturalTraitDieCount, numberOfSides) {
     bustCount = 0;
     isBust = false;
     bustContainer.hidden = true;
-    console.log(`just hid bust container. for the record, isBust is ${isBust} and bustContainer hidden is ${bustContainer.hidden}`)
     rollDice(adjustedTraitDieCount, numberOfSides);
-    console.log("just hit clickRoll. adjusted trait die count is " + adjustedTraitDieCount);
-    console.log("just hit clickRoll. Current running total is " + runningRollTotal)
     const rollButton = document.getElementById("rollButton")
     rollButton.setAttribute("onClick", "reRoll(naturalTraitDieCount, naturalTraitDieSides)")
     reportResult();
@@ -226,7 +228,6 @@ function reRoll() {
     bustCount = 0;
     isBust = false;
     bustContainer.hidden = true;
-    console.log(`just hid bust container. for the record, isBust is ${isBust} and bustContainer hidden is ${bustContainer.hidden}`)
     addMainRollRow(naturalTraitDieCount, naturalTraitDieSides);
     rollDice(adjustedTraitDieCount, adjustedTraitDieSides);
     reportResult();
