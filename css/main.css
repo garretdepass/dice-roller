@@ -335,7 +335,7 @@ ul {
     font-size: 12px;
 }
 
-.chipButton:hover:before {
+.chipButton:hover:after {
     content: "Use"
 }
 
