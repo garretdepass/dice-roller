@@ -1,5 +1,5 @@
 const blueChip = {
-    count: 20,
+    count: 0,
     name: "blueChip",
 }
 

@@ -77,6 +77,11 @@ function addTemplateRow(currentTrait, parentLocation) {
             for (let i = 0; i < attributeRow.length; i++) {
                 attributeRow[i].classList.remove("templateRowActive")
             }
+            var concentrationRow = [];
+            concentrationRow = document.getElementsByClassName("concentration-row")
+            for (let i = 0; i < concentrationRow.length; i++) {
+                concentrationRow[i].classList.remove("templateRowActive")
+            }
             newTemplateRow.classList.add("templateRowActive")
 
             
@@ -92,13 +97,13 @@ function addTemplateRow(currentTrait, parentLocation) {
             
             
     // add the text node to the newly created div
-    nameContainer.appendChild(rowIconContainer);
     nameContainer.appendChild(traitName);
     dieCountContainer.appendChild(traitDieCount);
     dieSidesContainer.appendChild(traitDieSides);
     dieInfoContainer.appendChild(dieCountContainer);
     dieInfoContainer.appendChild(plainTextD);
     dieInfoContainer.appendChild(dieSidesContainer);
+    newTemplateRow.appendChild(rowIconContainer);
     newTemplateRow.appendChild(nameContainer);
     newTemplateRow.appendChild(dieInfoContainer);
     templateRowLocation.appendChild(newTemplateRow);
@@ -121,7 +126,14 @@ function addTraitSection(characterTraitIndex) {
 
     // create div to contain trait name
     for (i in characterTraits[characterTraitIndex].subTraits) {
-        addTemplateRow(characterTraits[characterTraitIndex].subTraits[i], traitSection.id)        
+        addTemplateRow(characterTraits[characterTraitIndex].subTraits[i], traitSection.id);
+        
+        // if a character trait's attribute has at least one concentration, go through and create rows for each
+        if (characterTraits[characterTraitIndex].subTraits[i].subTraits[0]) {
+            for (let j = 0; j < characterTraits[characterTraitIndex].subTraits[i].subTraits.length; j++) {
+                addTemplateRow(characterTraits[characterTraitIndex].subTraits[i].subTraits[j], traitSection.id);
+            }
+        } 
     }
     
 };
@@ -135,6 +147,18 @@ function addAllTraitSections() {
     }
 
 ;}
+
+
+// // function that cycles through all traits and adds a section for each
+// function addAllTraitSectionsForCharacter(selectedCharacter) {
+
+    
+//     // create div to contain trait name
+//     for (i in characterTraits) {
+//         addTraitSection(i)
+//     }
+
+// ;}
 
 
 document.body.onload = addAllTraitSections;
