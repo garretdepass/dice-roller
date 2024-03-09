@@ -1,15 +1,16 @@
 // create an empty array of characters
-var characterList = [];
-var characterListIterator = 0;
+console.log("shit in here is at least running")
+var playerList = [];
+var playerListIterator = 0;
 
 // create a template object for a character
 const character = {
     name: "",
     sheetSrc: "",
     imgSrc: "",
-    // property to add a character to the characterList array
+    // property to add a character to the playerList array
     appendArray: function () {
-        characterList.push(this);
+        playerList.push(this);
     },
 
     //property to add an avatar to the characterSelector div
@@ -17,7 +18,7 @@ const character = {
         const parentLocation = document.getElementById("characterSelector");
     
         const avatarImage = document.createElement("img");
-        avatarImage.id = `avatar${characterListIterator}`;
+        avatarImage.id = `avatar${playerListIterator}`;
         avatarImage.classList.add("avatar");
         avatarImage.src = characterImgSrc;
         parentLocation.appendChild(avatarImage);
@@ -25,8 +26,8 @@ const character = {
     
     // property to add an onClick event to the avatar
     addClickListener: function (characterSheetSrc) {
-        const avatarImage = document.getElementById(`avatar${characterListIterator}`);
-        console.log("working at this point. Character list number is " + characterListIterator);
+        const avatarImage = document.getElementById(`avatar${playerListIterator}`);
+        console.log("working at this point. Character list number is " + playerListIterator);
         avatarImage.addEventListener(
             "mousedown",
             (event) => {
@@ -52,7 +53,7 @@ const character = {
         newCharacter.appendArray();
         newCharacter.addAvatar(characterImgSrc);
         newCharacter.addClickListener(characterSheetSrc);
-        characterListIterator++;
+        playerListIterator++;
 }
 
 addCharacter("Petey Barnum", "javascript/characterSheets/garretCharacterSheet.js", "assets/images/peteyBarnum.png");

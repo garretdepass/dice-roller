@@ -1,6 +1,5 @@
 // function that adds a row to a template section, including trait name, die count, and die sides. Takes 2 
 // arguments - the current trait (or attribute/concentration) and the name of the parent location to append with this row
-
 function addTemplateRow(currentTrait, parentLocation) {
     
     // set variable that contains character sheet ID
@@ -149,16 +148,18 @@ function addAllTraitSections() {
 ;}
 
 
-// // function that cycles through all traits and adds a section for each
-// function addAllTraitSectionsForCharacter(selectedCharacter) {
+// function that cycles through all traits and adds a section for each
+function addAllTraitSectionsForCharacter(selectedCharacter) {
 
     
-//     // create div to contain trait name
-//     for (i in characterTraits) {
-//         addTraitSection(i)
-//     }
+    // create div to contain trait name
+    for (i in selectedCharacter.characterTraits) {
+        addTraitSection(i)
+    }
 
-// ;}
+;}
 
 
-document.body.onload = addAllTraitSections;
+// document.body.onload = addAllTraitSections;
+
+document.body.onload = addAllTraitSectionsForCharacter(player2);

@@ -20,6 +20,7 @@ const templateRow = {
 
 
 
+
 const cognition = Object.create(templateRow)
 cognition.name = "Cognition";
 cognition.dieCount = 4;
@@ -433,3 +434,5 @@ quickDraw.subTraits = [quickDrawPistol];
 smarts.subTraits = [bluff, gamblin, ridicule, scroungin, streetwise, survival, tinkerin];
 spirit.subTraits = [faith, guts];
 const characterTraits = [cognition, deftness, knowledge, mien, nimbleness, quickness, smarts, spirit, strength, vigor];
+
+
