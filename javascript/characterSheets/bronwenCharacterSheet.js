@@ -1,94 +1,84 @@
-var player0 = {
+var player1 = {
     trait: [
 
         {
             name: "Cognition",
             dieCount: 4,
-            dieSides: 8,
+            dieSides: 12,
             type: "trait",
             attribute: [
                 
                 {
                     name: "Artillery",
                     dieCount: 0,
-                    dieSides: 8,
+                    dieSides: 12,
                     type: "attribute",
                 },
                 {
                     name: "Arts",
                     dieCount: 0,
-                    dieSides: 8,
+                    dieSides: 12,
                     type: "attribute",
                 },
                 {   
                     name: "Scrutinize",
-                    dieCount: 2,
-                    dieSides: 8,
+                    dieCount: 1,
+                    dieSides: 12,
                     type: "attribute",
                 },
                 {
                     name: "Search",
                     dieCount: 2,
-                    dieSides: 8,
+                    dieSides: 12,
                     type: "attribute",
                 },
                 {
                     name: "Trackin'",
-                    dieCount: 0,
-                    dieSides: 8,
+                    dieCount: 3,
+                    dieSides: 12,
                     type: "attribute",
                 }
             ]
         },
         {
             name: "Deftness",
-            dieCount: 1,
+            dieCount: 3,
             dieSides: 10,
             type: "trait",
             attribute: [
                 {
                     name: "Bow",
-                    dieCount: 0,
+                    dieCount: 4,
                     dieSides: 10,
                     type: "attribute",
                 },
                 {
                     name: "Filchin'",
-                    dieCount: 1,
+                    dieCount: 0,
                     dieSides: 10,
                     type: "attribute",
                 },
                 {
                     name: "Lockpickin'",
-                    dieCount: 1,
+                    dieCount: 0,
                     dieSides: 10,
                     type: "attribute",
                 },
                 {
                     name: "Shootin'",
-                    dieCount: 4,
+                    dieCount: 0,
                     dieSides: 10,
                     type: "attribute",
-                    concentration: [
-                        
-                        {
-                            name: "Pistol'",
-                            dieCount: 4,
-                            dieSides: 10,
-                            type: "concentration",
-                        },  
-                        
-                    ]
                 },
                 {
                     name: "Sleight of hand",
-                    dieCount: 1,
+                    dieCount: 0,
                     dieSides: 10,
                     type: "attribute",
                 },
                 {
                     name: "Speed load",
-                    dieCount: 1,
+                    dieCount: 0,
                     dieSides: 10,
                     type: "attribute",
                 },
@@ -102,61 +92,65 @@ var player0 = {
         },
         {
             name: "Knowledge",
-            dieCount: 3,
-            dieSides: 6,
+            dieCount: 1,
+            dieSides: 4,
             type: "trait",
             attribute: [
                 {
                     name: "Academia",
-                    dieCount: 1,
-                    dieSides: 6,
+                    dieCount: 0,
+                    dieSides: 4,
                     type: "attribute",
-                    concentration: [
-                        {
-                            name: "Occult",
-                            dieCount: 1,
-                            dieSides: 6,
-                            type: "concentration",
-                        },  
-                    ]
                 },
                 {
                     name: "Area knowledge",
                     dieCount: 2,
-                    dieSides: 6,
+                    dieSides: 4,
                     type: "attribute",
                     concentration: [
                         {
                             name: "Home County",
                             dieCount: 2,
-                            dieSides: 6,
+                            dieSides: 4,
                             type: "concentration",
-                            location: "Boston",
+                            location: "San Joaquin",
                         },  
                     ]
                 },
                 {
                     name: "Demolition",
                     dieCount: 0,
-                    dieSides: 6,
+                    dieSides: 4,
                     type: "attribute",
                 },
                 {
                     name: "Disguise",
-                    dieCount: 1,
-                    dieSides: 6,
+                    dieCount: 0,
+                    dieSides: 4,
                     type: "attribute",
                 },
                 {
                     name: "Language",
                     dieCount: 2,
-                    dieSides: 6,
+                    dieSides: 4,
                     type: "attribute",
                     concentration: [
                         {
-                            name: "English",
+                            name: "Pomo",
                             dieCount: 2,
-                            dieSides: 6,
+                            dieSides: 4,
+                            type: "concentration",
+                        },  
+                        {
+                            name: "Indian Sign Language",
+                            dieCount: 2,
+                            dieSides: 4,
+                            type: "concentration",
+                        },  
+                        {
+                            name: "English",
+                            dieCount: 1,
+                            dieSides: 4,
                             type: "concentration",
                         },  
                     ]
@@ -164,47 +158,31 @@ var player0 = {
                 {
                     name: "Mad Science",
                     dieCount: 0,
-                    dieSides: 6,
+                    dieSides: 4,
                     type: "attribute",
                 },
                 {
                     name: "Medicine",
                     dieCount: 0,
-                    dieSides: 6,
+                    dieSides: 4,
                     type: "attribute",
                 },
                 {
                     name: "Professional",
-                    dieCount: 1,
-                    dieSides: 6,
+                    dieCount: 0,
+                    dieSides: 4,
                     type: "attribute",
-                    concentration: [
-                        {
-                            name: "Law",
-                            dieCount: 1,
-                            dieSides: 6,
-                            type: "concentration",
-                        },  
-                    ]
                 },
                 {
                     name: "Science",
-                    dieCount: 1,
-                    dieSides: 6,
+                    dieCount: 0,
+                    dieSides: 4,
                     type: "attribute",
-                    concentration: [
-                        {
-                            name: "Biology",
-                            dieCount: 1,
-                            dieSides: 6,
-                            type: "concentration",
-                        },  
-                    ]
                 },
                 {
                     name: "Trade",
                     dieCount: 0,
-                    dieSides: 6,
+                    dieSides: 4,
                     type: "attribute",
                 },
             ]
@@ -212,115 +190,99 @@ var player0 = {
         {
             name: "Mien",
             dieCount: 4,
-            dieSides: 12,
+            dieSides: 6,
             type: "trait",
             attribute: [
                 {
                     name: "Animal wranglin'",
                     dieCount: 0,
-                    dieSides: 12,
+                    dieSides: 6,
                     type: "attribute",
                 },
                 {
                     name: "Leadership",
-                    dieCount: 1,
-                    dieSides: 12,
+                    dieCount: 0,
+                    dieSides: 6,
                     type: "attribute",
                 },
                 {
                     name: "Overawe",
                     dieCount: 0,
-                    dieSides: 12,
+                    dieSides: 6,
                     type: "attribute",
                 },
                 {
                     name: "Performin'",
-                    dieCount: 2,
-                    dieSides: 12,
+                    dieCount: 0,
+                    dieSides: 6,
                     type: "attribute",
-                    concentration: [
-                        {
-                            name: "Acting",
-                            dieCount: 2,
-                            dieSides: 12,
-                            type: "concentration",
-                        },  
-                    ]
                 },
                 {
                     name: "Persuasion",
-                    dieCount: 3,
-                    dieSides: 12,
+                    dieCount: 0,
+                    dieSides: 6,
                     type: "attribute",
                 },
                 {
                     name: "Tale Tellin'",
-                    dieCount: 2,
-                    dieSides: 12,
+                    dieCount: 0,
+                    dieSides: 6,
                     type: "attribute",
                 },
             ]
         },
         {
             name: "Nimbleness",
-            dieCount: 2,
-            dieSides: 8,
+            dieCount: 4,
+            dieSides: 10,
             type: "trait",
             attribute: [
                 {
                     name: "Climbin'",
-                    dieCount: 1,
-                    dieSides: 8,
+                    dieCount: 2,
+                    dieSides: 10,
                     type: "attribute",
                 },
                 {
                     name: "Dodge",
-                    dieCount: 2,
-                    dieSides: 8,
+                    dieCount: 3,
+                    dieSides: 10,
                     type: "attribute",
                 },
                 {
                     name: "Drivin'",
-                    dieCount: 1,
-                    dieSides: 8,
+                    dieCount: 0,
+                    dieSides: 10,
                     type: "attribute",
-                    concentration: [
-                        {
-                            name: "Steam Wagon",
-                            dieCount: 1,
-                            dieSides: 8,
-                            type: "concentration",
-                        },  
-                    ]
                 },
                 {
                     name: "Fightin'",
-                    dieCount: 0,
-                    dieSides: 8,
+                    dieCount: 1,
+                    dieSides: 10,
                     type: "attribute",
                 },
                 {
                     name: "Horse ridin'",
                     dieCount: 0,
-                    dieSides: 8,
+                    dieSides: 10,
                     type: "attribute",
                 },
                 {
                     name: "Sneak",
                     dieCount: 3,
-                    dieSides: 8,
+                    dieSides: 10,
                     type: "attribute",
                 },
                 {
                     name: "Swimmin'",
-                    dieCount: 0,
-                    dieSides: 8,
+                    dieCount: 2,
+                    dieSides: 10,
                     type: "attribute",
                 },
                 {
                     name: "Teamster",
                     dieCount: 0,
-                    dieSides: 8,
+                    dieSides: 10,
                     type: "attribute",
                 },
             ]
@@ -333,17 +295,9 @@ var player0 = {
             attribute: [
                 {
                     name: "Quick Draw",
-                    dieCount: 2,
+                    dieCount: 0,
                     dieSides: 10,
                     type: "attribute",
-                    concentration: [
-                        {
-                            name: "Pistol",
-                            dieCount: 2,
-                            dieSides: 10,
-                            type: "concentration",
-                        },  
-                    ]
                 },
             ]
         },
@@ -355,7 +309,7 @@ var player0 = {
             attribute: [
                 {
                     name: "Bluff",
-                    dieCount: 2,
+                    dieCount: 1,
                     dieSides: 10,
                     type: "attribute",
                 },
@@ -367,25 +321,25 @@ var player0 = {
                 },
                 {
                     name: "Ridicule",
-                    dieCount: 1,
+                    dieCount: 0,
                     dieSides: 10,
                     type: "attribute",
                 },
                 {
                     name: "Scroungin'",
-                    dieCount: 0,
+                    dieCount: 3,
                     dieSides: 10,
                     type: "attribute",
                 },
                 {
                     name: "Streetwise",
-                    dieCount: 1,
+                    dieCount: 0,
                     dieSides: 10,
                     type: "attribute",
                 },
                 {
                     name: "Survival",
-                    dieCount: 0,
+                    dieCount: 3,
                     dieSides: 10,
                     type: "attribute",
                 },
@@ -399,38 +353,38 @@ var player0 = {
         },
         {
             name: "Spirit",
-            dieCount: 3,
-            dieSides: 8,
+            dieCount: 2,
+            dieSides: 12,
             type: "trait",
             attribute: [
                 {
                     name: "Faith",
-                    dieCount: 0,
-                    dieSides: 8,
+                    dieCount: 2,
+                    dieSides: 12,
                     type: "attribute",
                 },
                 {
                     name: "Guts",
                     dieCount: 5,
-                    dieSides: 8,
+                    dieSides: 12,
                     type: "attribute",
                 },
             ]
         },
         {
             name: "Strength",
-            dieCount: 2,
-            dieSides: 4,
+            dieCount: 3,
+            dieSides: 8,
             type: "trait",
         },
         {
             name: "Vigor",
-            dieCount: 4,
-            dieSides: 6,
+            dieCount: 1,
+            dieSides: 8,
             type: "trait",
         },
     ]
     
 };
 
-addCharacter("Petey Barnum", "javascript/characterSheets/garretCharacterSheet.js", "assets/images/peteyBarnum.png", player0);
+addCharacter("Running Wolf", "javascript/characterSheets/bronwenCharacterSheet.js", "assets/images/runningWolf.png", player1);

@@ -10,6 +10,25 @@ var bustCount = 0;
 var isBust = false;
 
 
+// define function to remove any existing rollRows, penalties, and bust indicators
+function clearRollConditions () {
+    const rollRowContainer = document.getElementById("rollRowContainer");
+    rollRowContainer.replaceChildren();
+    rollRowCount = 0;
+    currentPenalty = 0
+    isBust = 0;
+    bustContainer.hidden = true;
+
+    // reset any roll result text
+    document.getElementById("rollResult").hidden = true;
+    const rollButton = document.getElementById("rollButton");
+    rollButton.textContent = "Roll";
+    document.getElementById("rollButton").disabled = false;
+    document.getElementById("penaltyText").hidden = true;
+    
+    //hide helper text
+    document.getElementById("helperText").hidden = true;
+}
 
 
 function reportBust () {
@@ -77,8 +96,8 @@ function addDice (numberOfDice, numberOfSides, newRollRow) {
                 dieShape.setAttribute("d","M29.7744 2.39857C31.3726 0.219177 34.6274 0.219179 36.2256 2.39857L64.2653 40.6345C65.2978 42.0425 65.2978 43.9575 64.2653 45.3655L36.2256 83.6014C34.6274 85.7808 31.3726 85.7808 29.7744 83.6014L1.73467 45.3655C0.702161 43.9575 0.70216 42.0425 1.73467 40.6345L29.7744 2.39857Z")
                 dieShape.classList.add("die", `dieType-d${numberOfSides}`);
                 break;
-            case 10:
-                var dieShape = document.createElementNS(
+                case 10:
+                    var dieShape = document.createElementNS(
                     "http://www.w3.org/2000/svg",
                     "rect",
                 );
@@ -177,23 +196,9 @@ function addMainRollRow(numberOfDice, numberOfSides) {
     adjustedTraitDieCount = numberOfDice;
     adjustedTraitDieSides = numberOfSides;
 
+
     // remove any existing rollRows, penalties, and bust indicators
-    const rollRowContainer = document.getElementById("rollRowContainer");
-    rollRowContainer.replaceChildren();
-    rollRowCount = 0;
-    currentPenalty = 0
-    isBust = 0;
-    bustContainer.hidden = true;
-    
-    // reset any roll result text
-    document.getElementById("rollResult").hidden = true;
-    const rollButton = document.getElementById("rollButton");
-    rollButton.textContent = "Roll";
-    document.getElementById("rollButton").disabled = false;
-    document.getElementById("penaltyText").hidden = true;
-    
-    //hide helper text
-    document.getElementById("helperText").hidden = true;
+    clearRollConditions()
     
 
     // deal with any penalties

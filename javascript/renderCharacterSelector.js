@@ -1,5 +1,4 @@
 // create an empty array of characters
-console.log("shit in here is at least running")
 var playerList = [];
 var playerListIterator = 0;
 
@@ -25,42 +24,56 @@ const character = {
     },
     
     // property to add an onClick event to the avatar
-    addClickListener: function (characterSheetSrc) {
+    addClickListener: function (characterSheetSrc, playerNumber) {
         const avatarImage = document.getElementById(`avatar${playerListIterator}`);
         console.log("working at this point. Character list number is " + playerListIterator);
         avatarImage.addEventListener(
             "mousedown",
             (event) => {
+
                 var avatarList = [];
                 avatarList = document.getElementsByClassName("avatar");
-                for (i in avatarList.length) {
-                    avatarList.classList.remove("selected");
+                for (let i = 0; i < avatarList.length; i++) {
+                    avatarList[i].classList.remove("selectedAvatar");
                 };
-                avatarImage.classList.add("selected");
-                addAllTraitSections();
-                console.log("mousedown working!");
+                avatarImage.classList.add("selectedAvatar");
+                if (currentPlayerName !== playerNumber) {
+                    const characterSheetID = document.getElementById("characterSheet")
+                    clearRollConditions ();
+                    document.getElementById("helperText").hidden = false;
+                    document.getElementById("rollButton").disabled = true;
+                    currentPlayerName = playerNumber;
+                    characterSheetID.replaceChildren();
+                    addAllTraitSectionsForCharacter(playerNumber);
+                }
+                console.log("mousedown working! the player number is " + playerNumber.trait[0].name);
             }
             )
         },
     }
     
     // define a function that adds a character with arguments
-    function addCharacter (characterName, characterSheetSrc, characterImgSrc) {
+    function addCharacter (characterName, characterSheetSrc, characterImgSrc, playerNumber) {
         const newCharacter = Object.create(character);
         newCharacter.name = characterName;
         newCharacter.sheetSrc = characterSheetSrc;
         newCharacter.imgSrc = characterImgSrc;
+        newCharacter.player = playerNumber
         newCharacter.appendArray();
         newCharacter.addAvatar(characterImgSrc);
-        newCharacter.addClickListener(characterSheetSrc);
+        newCharacter.addClickListener(characterSheetSrc, playerNumber);
+        if (playerNumber == player0) {
+            const avatarImage = document.getElementById(`avatar${playerListIterator}`);
+            avatarImage.classList.add("selectedAvatar");
+        }
         playerListIterator++;
 }
 
-addCharacter("Petey Barnum", "javascript/characterSheets/garretCharacterSheet.js", "assets/images/peteyBarnum.png");
-addCharacter("Running Wolf", "javascript/characterSheets/bronwenCharacterSheet.js", "assets/images/runningWolf.png");
-addCharacter("Petey Barnum", "javascript/characterSheets/garretCharacterSheet.js", "assets/images/peteyBarnum.png");
-addCharacter("Running Wolf", "javascript/characterSheets/bronwenCharacterSheet.js", "assets/images/runningWolf.png");
-addCharacter("Petey Barnum", "javascript/characterSheets/garretCharacterSheet.js", "assets/images/peteyBarnum.png");
-addCharacter("Running Wolf", "javascript/characterSheets/bronwenCharacterSheet.js", "assets/images/runningWolf.png");
-addCharacter("Petey Barnum", "javascript/characterSheets/garretCharacterSheet.js", "assets/images/peteyBarnum.png");
-addCharacter("Running Wolf", "javascript/characterSheets/bronwenCharacterSheet.js", "assets/images/runningWolf.png");
+// addCharacter("Petey Barnum", "javascript/characterSheets/garretCharacterSheet.js", "assets/images/peteyBarnum.png", player1);
+// addCharacter("Running Wolf", "javascript/characterSheets/bronwenCharacterSheet.js", "assets/images/runningWolf.png", player2);
+// addCharacter("Petey Barnum", "javascript/characterSheets/garretCharacterSheet.js", "assets/images/peteyBarnum.png", player3);
+// addCharacter("Running Wolf", "javascript/characterSheets/bronwenCharacterSheet.js", "assets/images/runningWolf.png", player4);
+// addCharacter("Petey Barnum", "javascript/characterSheets/garretCharacterSheet.js", "assets/images/peteyBarnum.png", player5);
+// addCharacter("Running Wolf", "javascript/characterSheets/bronwenCharacterSheet.js", "assets/images/runningWolf.png", player6);
+// addCharacter("Petey Barnum", "javascript/characterSheets/garretCharacterSheet.js", "assets/images/peteyBarnum.png", player7);
+// addCharacter("Running Wolf", "javascript/characterSheets/bronwenCharacterSheet.js", "assets/images/runningWolf.png", player8);

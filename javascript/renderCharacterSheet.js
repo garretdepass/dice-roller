@@ -1,3 +1,7 @@
+// set global variable to indicate the current player name
+var currentPlayerName = player0
+
+
 // function that adds a row to a template section, including trait name, die count, and die sides. Takes 2 
 // arguments - the current trait (or attribute/concentration) and the name of the parent location to append with this row
 function addTemplateRow(currentTrait, parentLocation) {
@@ -109,52 +113,44 @@ function addTemplateRow(currentTrait, parentLocation) {
 };
 
 // function that adds trait and all child attributes for a trait section.
-function addTraitSection(characterTraitIndex) {
+function addTraitSection(traitCount) {
 
     // set variable that contains character sheet ID
     const characterSheetID = document.getElementById("characterSheet")
     
     // create a new div element
     const traitSection = document.createElement("ul");
-    traitSection.setAttribute("id", `${characterTraits[characterTraitIndex].name}-section`);
+    traitSection.setAttribute("id", `${currentPlayerName.trait[traitCount].name}-section`);
     
     // add the text node to the newly created div
     characterSheetID.appendChild(traitSection);
     
-    addTemplateRow(characterTraits[characterTraitIndex], traitSection.id)
+    addTemplateRow(currentPlayerName.trait[traitCount], traitSection.id)
 
     // create div to contain trait name
-    for (i in characterTraits[characterTraitIndex].subTraits) {
-        addTemplateRow(characterTraits[characterTraitIndex].subTraits[i], traitSection.id);
+    for (attributeCount in currentPlayerName.trait[traitCount].attribute) {
+        addTemplateRow(currentPlayerName.trait[traitCount].attribute[attributeCount], traitSection.id);
         
         // if a character trait's attribute has at least one concentration, go through and create rows for each
-        if (characterTraits[characterTraitIndex].subTraits[i].subTraits[0]) {
-            for (let j = 0; j < characterTraits[characterTraitIndex].subTraits[i].subTraits.length; j++) {
-                addTemplateRow(characterTraits[characterTraitIndex].subTraits[i].subTraits[j], traitSection.id);
+        if (currentPlayerName.trait[traitCount].attribute[attributeCount].concentration) {
+            for (let concentrationCount = 0; concentrationCount < currentPlayerName.trait[traitCount].attribute[attributeCount].concentration.length; concentrationCount++) {
+                addTemplateRow(currentPlayerName.trait[traitCount].attribute[attributeCount].concentration[concentrationCount], traitSection.id);
             }
+        } else {
+            console.log("nothing to see here")
         } 
     }
     
 };
 
-// function that cycles through all traits and adds a section for each
-function addAllTraitSections() {
-
-    // create div to contain trait name
-    for (i in characterTraits) {
-        addTraitSection(i)
-    }
-
-;}
-
 
 // function that cycles through all traits and adds a section for each
-function addAllTraitSectionsForCharacter(selectedCharacter) {
+function addAllTraitSectionsForCharacter(playerNumber) {
 
-    
+    currentPlayerName = playerNumber;
     // create div to contain trait name
-    for (i in selectedCharacter.characterTraits) {
-        addTraitSection(i)
+    for (traitCount in playerNumber.trait) {
+        addTraitSection(traitCount)
     }
 
 ;}
@@ -162,4 +158,4 @@ function addAllTraitSectionsForCharacter(selectedCharacter) {
 
 // document.body.onload = addAllTraitSections;
 
-document.body.onload = addAllTraitSectionsForCharacter(player2);
+document.body.onload = addAllTraitSectionsForCharacter(currentPlayerName);

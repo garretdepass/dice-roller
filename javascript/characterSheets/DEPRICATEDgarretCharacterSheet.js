@@ -18,10 +18,13 @@ const templateRow = {
     },
 }
 
+
+
+
 const cognition = Object.create(templateRow)
 cognition.name = "Cognition";
 cognition.dieCount = 4;
-cognition.dieSides = 100;
+cognition.dieSides = 8;
 cognition.type = "trait";
 
     const artillery = Object.create(templateRow)
@@ -433,6 +436,3 @@ spirit.subTraits = [faith, guts];
 const characterTraits = [cognition, deftness, knowledge, mien, nimbleness, quickness, smarts, spirit, strength, vigor];
 
 
-player1 = {
-    characterTraits: characterTraits,
-}
