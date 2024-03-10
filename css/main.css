@@ -93,6 +93,7 @@ ul {
 #panelLayout {
     display: flex;
     flex-direction: row;
+    height: 100vh;
 }
 
 .lightPanel {
@@ -112,29 +113,40 @@ ul {
     align-items: flex-start;
     flex-shrink: 0;
     align-self: stretch;
-    overflow: hidden;
     background: var(--main-gray-1Gray-1, #333);
 }
 
 #characterSelector {
     display: flex;
-    padding: 16px 8px 16px 0px;
+    padding: 16px 8px 0px 0px;
     align-items: flex-start;
     gap: 12px;
     align-self: stretch;
     overflow-x:scroll;
-    border-bottom: 1px solid var(--Gray-3, #828282);
+    /* border-bottom: 1px solid var(--Gray-3, #828282); */
     background: var(--main-gray-1Gray-1, #333);
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    padding-bottom: 8px;
+}
+
+.selectedAvatar {
+    border-bottom: 3px solid var(--main-blue-1Blue-1, #2F80ED);
+    /* background: var(--main-gray-2, #4F4F4F); */
+    /* box-shadow: 0px 0px 3px 0px var(--main-blue-1Blue-1, #2F80ED); */
 }
 
 #characterSheet {
     display: flex;
-    width: 242px;
+    padding: 16px 0px;
     flex-direction: column;
     align-items: flex-start;
-    flex-shrink: 0;
+    gap: 16px;
+    flex: 1 0 0;
     align-self: stretch;
-    height: 100vh;
     overflow: scroll;
 }
 
