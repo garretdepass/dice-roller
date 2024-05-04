@@ -26,7 +26,6 @@ const character = {
     // property to add an onClick event to the avatar
     addClickListener: function (characterSheetSrc, playerNumber) {
         const avatarImage = document.getElementById(`avatar${playerListIterator}`);
-        console.log("working at this point. Character list number is " + playerListIterator);
         avatarImage.addEventListener(
             "mousedown",
             (event) => {
@@ -37,6 +36,7 @@ const character = {
                     avatarList[i].classList.remove("selectedAvatar");
                 };
                 avatarImage.classList.add("selectedAvatar");
+                // if you are selecting an avatar different than the currently selected one
                 if (currentPlayerName !== playerNumber) {
                     const characterSheetID = document.getElementById("characterSheet")
                     clearRollConditions ();
@@ -46,7 +46,6 @@ const character = {
                     characterSheetID.replaceChildren();
                     addAllTraitSectionsForCharacter(playerNumber);
                 }
-                console.log("mousedown working! the player number is " + playerNumber.trait[0].name);
             }
             )
         },

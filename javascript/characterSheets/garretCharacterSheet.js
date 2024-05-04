@@ -66,14 +66,14 @@ var player0 = {
                 },
                 {
                     name: "Shootin'",
-                    dieCount: 4,
+                    dieCount: 5,
                     dieSides: 10,
                     type: "attribute",
                     concentration: [
                         
                         {
                             name: "Pistol'",
-                            dieCount: 4,
+                            dieCount: 5,
                             dieSides: 10,
                             type: "concentration",
                         },  

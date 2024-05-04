@@ -136,9 +136,7 @@ function addTraitSection(traitCount) {
             for (let concentrationCount = 0; concentrationCount < currentPlayerName.trait[traitCount].attribute[attributeCount].concentration.length; concentrationCount++) {
                 addTemplateRow(currentPlayerName.trait[traitCount].attribute[attributeCount].concentration[concentrationCount], traitSection.id);
             }
-        } else {
-            console.log("nothing to see here")
-        } 
+        }
     }
     
 };
