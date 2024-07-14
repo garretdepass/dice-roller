@@ -45,6 +45,8 @@ const character = {
                     currentPlayerName = playerNumber;
                     characterSheetID.replaceChildren();
                     addAllTraitSectionsForCharacter(playerNumber);
+                    addAllChips(playerNumber);
+                    addWind(playerNumber)
                 }
             }
             )

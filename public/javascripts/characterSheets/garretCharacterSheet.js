@@ -1,4 +1,12 @@
 var player0 = {
+   
+    chipcount: {
+        white: 2,
+        red: 3,
+        blue: 4,
+        legendary: 1,
+    },
+
     trait: [
 
         {
@@ -429,8 +437,12 @@ var player0 = {
             dieSides: 6,
             type: "trait",
         },
-    ]
+    ],
+    
+    wind: 0,
     
 };
+
+player0.wind = player0.trait[7].dieSides + player0.trait[9].dieSides;
 
 addCharacter("Petey Barnum", "javascript/characterSheets/garretCharacterSheet.js", "assets/images/peteyBarnum.png", player0);

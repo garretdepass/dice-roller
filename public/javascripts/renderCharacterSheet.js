@@ -1,3 +1,4 @@
+
 // set global variable to indicate the current player name
 var currentPlayerName = player0
 
@@ -142,7 +143,7 @@ function addTraitSection(traitCount) {
 };
 
 
-// function that cycles through all traits and adds a section for each
+// function that cycles through all traits and adds a section for each. Exploring adding all chips in this function, but split out to abstract from higher level function
 function addAllTraitSectionsForCharacter(playerNumber) {
 
     currentPlayerName = playerNumber;
@@ -150,10 +151,33 @@ function addAllTraitSectionsForCharacter(playerNumber) {
     for (traitCount in playerNumber.trait) {
         addTraitSection(traitCount)
     }
-
 ;}
 
 
+// function that adds the current chip count for player - very experimental... 
+// not hooked up to anything. Intention to have this happen whenever all character traits
+// are loaded, as called in renderCharachterSelector.
+
+
+function addAllChips(playerNumber) {
+    currentPlayerName = playerNumber;
+    blueChip.count = currentPlayerName.chipcount.blue;
+    blueChip.htmlElement.textContent = blueChip.count;
+    redChip.count = currentPlayerName.chipcount.red;
+    redChip.htmlElement.textContent = redChip.count;
+    whiteChip.count = currentPlayerName.chipcount.white;
+    whiteChip.htmlElement.textContent = whiteChip.count;
+}
+
+// function that adds the current wind for player. Currently just takes wind from character sheet and console.logs it.
+
+function addWind(playerNumber) {
+    currentPlayerName = playerNumber;
+    console.log(currentPlayerName.wind);  
+}
+
+// function that adds the current equipment list for player
+
 // document.body.onload = addAllTraitSections;
 
-document.body.onload = addAllTraitSectionsForCharacter(currentPlayerName);
+document.body.onload = addAllTraitSectionsForCharacter(currentPlayerName), addAllChips(currentPlayerName), addWind(currentPlayerName);

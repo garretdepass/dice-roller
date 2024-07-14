@@ -1,4 +1,12 @@
 var player1 = {
+
+    chipcount: {
+        white: 6,
+        red: 5,
+        blue: 1,
+        legendary: 1,
+    },
+
     trait: [
 
         {
@@ -383,8 +391,12 @@ var player1 = {
             dieSides: 8,
             type: "trait",
         },
-    ]
+    ],
+
+    wind: 0,
     
 };
+
+player1.wind = player1.trait[7].dieSides + player1.trait[9].dieSides;
 
 addCharacter("Running Wolf", "javascript/characterSheets/bronwenCharacterSheet.js", "assets/images/runningWolf.png", player1);
