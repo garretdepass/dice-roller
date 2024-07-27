@@ -295,9 +295,18 @@ var player0 = {
                 },
                 {
                     name: "Fightin'",
-                    dieCount: 0,
+                    dieCount: 1,
                     dieSides: 8,
                     type: "attribute",
+                    concentration: [
+                        
+                        {
+                            name: "Knife'",
+                            dieCount: 1,
+                            dieSides: 8,
+                            type: "concentration",
+                        },  
+                    ]
                 },
                 {
                     name: "Horse ridin'",
