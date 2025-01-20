@@ -247,7 +247,7 @@ mien.type = "trait";
 
     const persuasion = Object.create(templateRow)
     persuasion.name = "Persuasion";
-    persuasion.dieCount = 3;
+    persuasion.dieCount = 4;
     persuasion.dieSides = mien.dieSides;
     persuasion.type = "attribute";
 
