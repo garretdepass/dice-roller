@@ -316,7 +316,7 @@ var player0 = {
                 },
                 {
                     name: "Sneak",
-                    dieCount: 3,
+                    dieCount: 4,
                     dieSides: 8,
                     type: "attribute",
                 },
