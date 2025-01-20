@@ -249,7 +249,7 @@ var player0 = {
                 },
                 {
                     name: "Persuasion",
-                    dieCount: 3,
+                    dieCount: 4,
                     dieSides: 12,
                     type: "attribute",
                 },
